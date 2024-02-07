@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:blog_webapp/Screen/home_screen.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: ,
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
+    MaterialApp(
+        home: HomeScreen(),
+        debugShowCheckedModeBanner: false,
+    ),
+  );
 }
 

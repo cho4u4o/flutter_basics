@@ -21,6 +21,9 @@
       <excludeFolder url="file://$MODULE_DIR$/test_row_column/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/test_row_column/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/test_row_column/build" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

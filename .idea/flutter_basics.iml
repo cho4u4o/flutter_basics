@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/blog_webapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/blog_webapp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/blog_webapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/hello_world/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/hello_world/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/hello_world/build" />
+      <excludeFolder url="file://$MODULE_DIR$/row_and_column/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/row_and_column/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/row_and_column/build" />
+      <excludeFolder url="file://$MODULE_DIR$/splash_screen/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/splash_screen/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/splash_screen/build" />
+      <excludeFolder url="file://$MODULE_DIR$/test_proj/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/test_proj/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/test_proj/build" />
+      <excludeFolder url="file://$MODULE_DIR$/test_row_column/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/test_row_column/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/test_row_column/build" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/statefulwidget_before/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+  </component>
+</module>

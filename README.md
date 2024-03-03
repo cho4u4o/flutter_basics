@@ -1,2 +1,4 @@
 ### Learn Flutter with Basic Projects!
-|Nomad Coders & CodeFactory|
+| 날짜            | 내용                          |
+| -------- | ---------------------------- |
+| 20240303 | Stateful Widget                 |

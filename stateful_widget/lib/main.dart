@@ -1,65 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:statefulwidget_before/screen/home_screen.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Root(),
-  ));
+  runApp(const App());
 }
 
-class Root extends StatefulWidget {
-  const Root({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  _RootState createState() => _RootState();
+  State<App> createState() => _AppState();
 }
 
-class _RootState extends State<Root> {
-  Color color = Colors.blue;
-  bool show = false;
+class _AppState extends State<App> {
+  int counter = 0;
+
+  void onClicked() {
+    setState(() {
+      counter += 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: show
-                      ? HomeScreen(
-                          color: color,
-                        )
-                      : Container(),
+              const Text(
+                'Click Count',
+                style: TextStyle(
+                  fontSize: 20,
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        color = color == Colors.red ? Colors.blue : Colors.red;
-                      });
-                    },
-                    child: Text(
-                      '색깔 변경하기',
-                    ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        show = !show;
-                      });
-                    },
-                    child: Text(
-                      !show ? '위젯 생성하기' : '위젯 삭제하기',
-                    ),
-                  ),
-                ],
+              Text('$counter'),
+              IconButton(
+                iconSize: 40,
+                onPressed: onClicked,
+                icon: const Icon(Icons.add_box_rounded),
               ),
             ],
           ),

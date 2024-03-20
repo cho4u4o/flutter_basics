@@ -80,5 +80,8 @@ flutter:
     - family: Reem
       fonts:
         - asset: assets/fonts/ReemKufiFun-Medium.ttf
+    - family: IBM
+      fonts:
+        - asset: assets/fonts/IBMPlexSansDevanagari-Medium.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

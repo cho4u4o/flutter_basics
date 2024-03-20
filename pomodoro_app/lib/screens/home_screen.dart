@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro_app/time_button.dart';
 import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
@@ -9,18 +10,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twentyFiveMin = 1500;
   bool isRunning = false;
-  int totalSeconds = twentyFiveMin;
+  int totalSeconds = 1500;
   int totalPomodoros = 0;
+  int totalGoals = 0;
   late Timer timer; // initiate later
 
   void onClick(Timer timer) {
     if (totalSeconds == 0) {
       setState(() {
-        totalPomodoros = totalPomodoros + 1;
+        if (totalPomodoros <= 4) {
+          totalPomodoros = totalPomodoros + 1;
+        } else {
+          totalGoals = totalGoals + 1;
+          totalPomodoros = 0;
+        }
         isRunning = false;
-        totalSeconds = twentyFiveMin;
+        totalSeconds = 1500;
       });
       timer.cancel();
     } else {
@@ -49,7 +55,15 @@ class _HomeScreenState extends State<HomeScreen> {
     timer.cancel();
     setState(() {
       isRunning = false;
-      totalSeconds = twentyFiveMin;
+      totalSeconds = 1500;
+    });
+  }
+
+  void onButton(int time) {
+    setState(() {
+      isRunning = false;
+      timer.cancel();
+      totalSeconds = time * 60;
     });
   }
 
@@ -90,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
-                  fontFamily: "Reem",
+                  fontFamily: "IBM",
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -101,151 +115,55 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 10),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "25",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Archivo",
-                              fontSize: 30,
-                            ),
-                          ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        TimeButton(
+                          time: 25,
+                          onPressed: onButton,
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "30",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Archivo",
-                              fontSize: 30,
-                            ),
-                          ),
+                        TimeButton(
+                          time: 30,
+                          onPressed: onButton,
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "35",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Archivo",
-                              fontSize: 30,
-                            ),
-                          ),
+                        TimeButton(
+                          time: 35,
+                          onPressed: onButton,
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "40",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Reem",
-                              fontSize: 30,
-                            ),
-                          ),
+                        TimeButton(
+                          time: 40,
+                          onPressed: onButton,
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "45",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Reem",
-                              fontSize: 30,
-                            ),
-                          ),
+                        TimeButton(
+                          time: 45,
+                          onPressed: onButton,
                         ),
-                      ),
-                      const SizedBox(width: 30),
-                      Container(
-                        height: 60,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: 2,
-                              color: Theme.of(context).cardColor,
-                            )),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "50",
-                            style: TextStyle(
-                              color: Theme.of(context).cardColor,
-                              fontFamily: "Reem",
-                              fontSize: 30,
-                            ),
-                          ),
+                        TimeButton(
+                          time: 50,
+                          onPressed: onButton,
                         ),
-                      ),
-                    ],
+                        TimeButton(
+                          time: 55,
+                          onPressed: onButton,
+                        ),
+                        const SizedBox(width: 30),
+                      ],
+                    ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 40),
                 IconButton(
                   onPressed: isRunning ? onPausePressed : onStartPressed,
                   icon: Icon(isRunning
-                      ? Icons.pause_circle_outline
-                      : Icons.play_circle_outline),
+                      ? Icons.pause_circle_filled
+                      : Icons.play_circle_filled),
                   iconSize: 120,
                   color: Theme.of(context).cardColor,
                 ),
@@ -255,6 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   iconSize: 30,
                   color: Theme.of(context).cardColor,
                 ),
+                const SizedBox(height: 40),
               ],
             ),
           ),
@@ -274,17 +193,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "$totalPomodoros",
-                              style: TextStyle(
-                                fontSize: 60,
-                                fontFamily: "Reem",
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .color,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  "$totalPomodoros",
+                                  style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: "IBM",
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge!
+                                        .color,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "/4",
+                                  style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: "IBM",
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge!
+                                        .color,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
                             ),
                             Text(
                               "ROUND",
@@ -303,17 +238,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "$totalPomodoros",
-                              style: TextStyle(
-                                fontSize: 60,
-                                fontFamily: "Reem",
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .displayLarge!
-                                    .color!,
-                                fontWeight: FontWeight.w600,
-                              ),
+                            Row(
+                              children: [
+                                Text(
+                                  "$totalGoals",
+                                  style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: "IBM",
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge!
+                                        .color!,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  "/12",
+                                  style: TextStyle(
+                                    fontSize: 60,
+                                    fontFamily: "IBM",
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge!
+                                        .color,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
                             ),
                             Text(
                               "GOAL",

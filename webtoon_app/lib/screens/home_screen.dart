@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/webtoon.dart';
 import 'package:movie_app/services/api_service.dart';
+import 'package:movie_app/widgets/webtoon_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -28,22 +29,38 @@ class HomeScreen extends StatelessWidget {
         future: webtoons,
         builder: (context, future) {
           if (future.hasData) {
-            return ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: future.data!.length,
-              itemBuilder: (context, index) {
-                var webtoon = future.data![index];
-                return Text(webtoon.title);
-              },
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 20,
-              ),
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 30,
+                ),
+                Expanded(child: makeList(future))
+              ],
             );
           }
           return const Center(
             child: CircularProgressIndicator(),
           );
         },
+      ),
+    );
+  }
+
+  ListView makeList(AsyncSnapshot<List<WebtoonModel>> future) {
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      scrollDirection: Axis.horizontal,
+      itemCount: future.data!.length,
+      itemBuilder: (context, index) {
+        var webtoon = future.data![index];
+        return Webtoon(
+          id: webtoon.id,
+          thumb: webtoon.thumb,
+          title: webtoon.title,
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 40,
       ),
     );
   }
